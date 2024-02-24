@@ -1,0 +1,1423 @@
+﻿@inject SignInManager<ApplicationUser> signInManager;
+@inject UserManager<ApplicationUser> userManager;
+@{
+    if (User.Identity.Name is not null)
+    {
+        var user = await userManager.FindByEmailAsync(User.Identity.Name);
+    }
+    ViewData["Title"] = "Home Page";
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Jadesh Fabrics</title>
+    <link rel="icon" type="image/gif/png" href="~/Template/images/PickOneIcon.png" />
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:title" content="Vide" />
+    <meta name="keywords" content="Big store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link rel="stylesheet" href="~/Template/css/bootstrap.css" type="text/css" />
+    <!-- Custom Theme files -->
+    <link href="~/Template/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- js -->
+    <script src="~/Template/js/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/Template/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Template/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <link href="~/Template/css/font-awesome.css" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css' />
+    <link href='//fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css' />
+    <!--- start-rate---->
+    <script src="~/Template/js/jstarbox.js"></script>
+    <link rel="stylesheet" href="~/Template/css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript">
+        jQuery(function () {
+            jQuery('.starbox').each(function () {
+                var starbox = jQuery(this);
+                starbox.starbox({
+                    average: starbox.attr('data-start-value'),
+                    changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+                    ghosting: starbox.hasClass('ghosting'),
+                    autoUpdateAverage: starbox.hasClass('autoupdate'),
+                    buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+                    stars: starbox.attr('data-star-count') || 5
+                }).bind('starbox-value-changed', function (event, value) {
+                    if (starbox.hasClass('random')) {
+                        var val = Math.random();
+                        starbox.next().text(' ' + val);
+                        return val;
+                    }
+                })
+            });
+        });
+    </script>
+    <!---//End-rate---->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7396750455005022",
+            enable_page_level_ads: true
+        });
+    </script>
+
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+
+        .auto-style3 {
+            width: 162px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid blue;
+        }
+
+        th {
+            background-color: dodgerblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="Default.aspx">
+        <img src="~/Template/images/jades_logo.png" width="50" height="50" class="img-head" alt="" />
+    </a>
+    <div class="header">
+
+        <div class="container">
+
+            <div class="logo">
+                <h1>
+                    <a href="Default.aspx">
+                        <b>
+                            T<br />
+                            H<br />
+                            E
+                        </b>Jadesh Fabrics<span>Ensuring the Best</span>
+                    </a>
+                </h1>
+            </div>
+            <div class="head-t">
+                <ul class="card">
+
+                    @* <li><a href="wishlist.html"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li> *@
+                    @if (!signInManager.IsSignedIn(User))
+                    {
+                        <li><a href="Login.aspx"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
+                        <li><a href="Registration.aspx"><i class="fa fa-arrow-right" aria-hidden="true"></i>Register</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="Logout.aspx"><i class="fa fa-user" aria-hidden="true"></i>Logout</a></li>
+                        <li><a href="User/DisplayOrder.aspx"><i class="fa fa-file-text-o" aria-hidden="true"></i>Order History</a></li>
+                    }
+
+                    <li><a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i>About Us</a></li>
+                    <li><a href="#"><i class="fa fa-ship" aria-hidden="true"></i>Shipping</a></li>
+
+                </ul>
+            </div>
+            <div class="head-t">
+                <ul class="card">
+                    <li>
+                        <a href="User/ViewCart.aspx" class="hyper">
+                            <span>Cart</span>&nbsp;&nbsp;<span>
+                                Total Items :
+                                <asp:Label runat="server" ID="Label3" Text="0"></asp:Label>
+                            </span>&nbsp;&nbsp;<span>Cost : #<asp:Label runat="server" ID="Label4" Text="0"></asp:Label></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="header-ri">
+                <ul class="social-top">
+                    <li><a href="https://www.facebook.com/ZEE-B-Multiconcept-Global-ltd-2055369311178239/" class="icon facebook"><i class="fa fa-facebook" aria-hidden="true"></i><span></span></a></li>
+                    <li><a href="#" class="icon twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a></li>
+                    <li><a href="https://www.instagram.com/zee.b.ltd/" class="icon instagram"><i class="fa fa-instagram" aria-hidden="true"></i><span></span></a></li>
+                    <li><a href="#" class="icon dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i><span></span></a></li>
+                </ul>
+            </div>
+
+
+            <div class="nav-top">
+                <nav class="navbar navbar-default">
+
+                    <div class="navbar-header nav_2">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav ">
+                            <li class=" active"><a href="Default.aspx" class="hyper "><span>Store</span></a></li>
+
+                            <li class="dropdown ">
+                                <a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Product Category<b class="caret"></b></span></a>
+                                <ul class="dropdown-menu multi">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <ul class="multi-column-dropdown">
+                                                <asp:DataList runat="server" ID="dtl">
+                                                    <ItemTemplate>
+                                                        <li><a href="Default.aspx?CategoryID=<%#Eval(" ID") %>"><i class="fa fa-angle-right" aria-hidden="true"></i><%#Eval("Category") %></a></li>
+                                                    </ItemTemplate>
+
+                                                </asp:DataList>
+                                                @* <%--
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Water & Beverages</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Fruits & Vegetables</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Staples</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Branded Food</a></li>--%> *@
+                                            </ul>
+
+                                        </div>
+                                        @* <%--<div class="col-sm-3">
+
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Breakfast &amp; Cereal</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Snacks</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Spices</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Biscuit &amp; Cookie</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Sweets</a></li>
+
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Pickle & Condiment</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Instant Food</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Dry Fruit</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Tea &amp; Coffee</a></li>
+
+                                            </ul>
+                                        </div>--%>
+                                        <%--<div class="col-sm-3 w3l">
+                                            <a href="kitchen.html">
+                                                <img src="~/Template/images/me.png" class="img-responsive" alt="">
+                                            </a>
+                                        </div>--%> *@
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+
+                            @* <%--
+                            <li class="dropdown ">
+                                <a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown"><span>Kitchen<b class="caret"></b></span></a>
+                                <ul class="dropdown-menu multi">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <ul class="multi-column-dropdown">
+
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Water & Beverages</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Fruits & Vegetables</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Staples</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Branded Food</a></li>
+
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Breakfast &amp; Cereal</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Snacks</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Spices</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Biscuit &amp; Cookie</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Sweets</a></li>
+
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Pickle & Condiment</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Instant Food</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Dry Fruit</a></li>
+                                                <li><a href="kitchen.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Tea &amp; Coffee</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3 w3l">
+                                            <a href="kitchen.html">
+                                                <img src="~/Template/images/me.png" class="img-responsive" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle hyper" data-toggle="dropdown"><span>Personal Care <b class="caret"></b></span></a>
+                                <ul class="dropdown-menu multi multi1">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Ayurvedic </a></li>
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Baby Care</a></li>
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Cosmetics</a></li>
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Deo & Purfumes</a></li>
+
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Hair Care </a></li>
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Oral Care</a></li>
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Personal Hygiene</a></li>
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Skin care</a></li>
+
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Fashion Accessories </a></li>
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Grooming Tools</a></li>
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Shaving Need</a></li>
+                                                <li><a href="care.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Sanitary Needs</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3 w3l">
+                                            <a href="care.html">
+                                                <img src="~/Template/images/me1.png" class="img-responsive" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle hyper" data-toggle="dropdown"><span>Household<b class="caret"></b></span></a>
+                                <ul class="dropdown-menu multi multi2">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Cleaning Accessories</a></li>
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>CookWear</a></li>
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Detergents</a></li>
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Gardening Needs</a></li>
+
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Kitchen & Dining</a></li>
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>KitchenWear</a></li>
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Pet Care</a></li>
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Plastic Wear</a></li>
+
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-sm-3">
+
+                                            <ul class="multi-column-dropdown">
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Pooja Needs</a></li>
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Serveware</a></li>
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Safety Accessories</a></li>
+                                                <li><a href="hold.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Festive Decoratives </a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3 w3l">
+                                            <a href="hold.html">
+                                                <img src="~/Template/images/me2.png" class="img-responsive" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>--%> *@
+
+                            <li>
+                                <a href="User/ViewCart.aspx" class="hyper">
+                                    <span>Your Shopping Cart</span>&nbsp;&nbsp;<span>
+                                        Total Items :
+                                        <asp:Label runat="server" ID="lblCartTotalItem" Text="0"></asp:Label>
+                                    </span>&nbsp;&nbsp;<span>Cost : #<asp:Label runat="server" ID="lblCartTotalPrice" Text="0"></asp:Label></span>
+                                </a>
+                            </li>
+                            <li><a href="#" class="hyper"><span>Contact Us</span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                @* <%--<div class="cart">
+
+                    <span class="fa fa-shopping-cart my-cart-icon"><span class="badge badge-notify my-cart-badge"></span></span>
+                </div>--%> *@
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+    <!---->
+    @* <%--
+    <div data-vide-bg="video/video">
+        <div class="container">
+            <div class="banner-info">
+                <h3>
+                    It is a long established fact that a reader will be distracted by
+                    the readable
+                </h3>
+                <div class="search-form">
+                    <%--<form action="#" method="post">
+                        -%>
+                        <input type="text" placeholder="Search..." name="Search..." id="txtSearch" />
+                        <input type="submit" value=" " onclick="Search();" />
+                        <%--
+                    </form>-%>
+                </div>
+            </div>
+        </div>
+    </div>--%> *@
+    @* <%--
+    <div class="banner-info">
+        --%> *@
+        <div class="search-form">
+            @* <%--<form action="#" method="post">
+                --%> *@
+                <input type="text" style="border: 1px solid black; color: black" placeholder="Search..." name="Search..." id="txtSearch" />
+                <input type="submit" value=" " onclick="Search();" />
+                @* <%--
+            </form>--%> *@
+        </div>
+        @* <%--
+    </div>--%> *@
+
+    <script type="text/javascript">
+        function Search() {
+            window.location = "Default.aspx?search=" + document.getElementById("txtSearch").value;
+        }
+    </script>
+
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script src="js/jquery.vide.min.js"></script>
+    <div>
+                @RenderBody()
+    </div>
+    <!--content-->
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <a href="#">
+                    <img class="fourth-slide " src="~/Template/images/jades_logo.png" alt="Fourth slide">
+                </a>
+
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img class="first-slide" src="~/Template/images/jades_logo.png" alt="First slide">
+                </a>
+
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img class="second-slide " src="~/Template/images/jades_logo.png" alt="Second slide">
+                </a>
+
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img class="third-slide " src="~/Template/images/jades_logo.png" alt="Third slide">
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- /.carousel -->
+    <!--content-->
+    <!--footer-->
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-3 footer-grid">
+                <h3>About Us</h3>
+                <h3>Mission</h3>
+                <p>PickOne mission is making shopping an entertaining experience</p>
+
+                <h3>Vision</h3>
+                <p>PickOne vision is to integrate businesses to elevate financial wellbeing</p>
+            </div>
+            <div class="col-md-3 footer-grid ">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="Default.aspx">Store</a></li>
+                            @* <%--
+                    <li><a href="kitchen.html">Kitchen</a></li>
+                    <li><a href="care.html">Personal Care</a></li>
+                    <li><a href="hold.html">Household</a></li>
+                    <li><a href="codes.html">Short Codes</a></li>--%> *@
+                    <li>
+                        <a href="User/ViewCart.aspx">
+                            Your Shopping Cart&nbsp;&nbsp;Total Items :
+                            <asp:Label runat="server" ID="Label1" Text="0"></asp:Label>&nbsp;&nbsp;Cost : #<asp:Label runat="server" ID="Label2" Text="0"></asp:Label>
+                        </a>
+                    </li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-grid ">
+                <h3>Customer Services</h3>
+                <ul>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Faqs</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="Default.aspx">Online Shopping</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-3 footer-grid">
+                <h3>My Account</h3>
+                <ul>
+
+                            @if (!signInManager.IsSignedIn(User))
+                            {
+
+                        <li><a href="Login.aspx">Login</a></li>
+                        <li><a href="Registration.aspx">Register</a></li>
+                            }
+                            else
+                            {
+
+                        <li><a href="Logout.aspx">Logout</a></li>
+
+                            }
+
+
+                            @* <%--
+                    <li><a href="wishlist.html">Wishlist</a></li>--%> *@
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="footer-bottom">
+                <h2>
+                    <a href="Default.aspx">
+                        <b>
+                            T<br>
+                            H<br>
+                            E
+                        </b>Pick One Store<span>Ensuring the Best in your Hand</span>
+                    </a>
+                </h2>
+                <p class="fo-para">Making shopping an entertaining experience</p>
+                <ul class="social-fo">
+                    
+                    @* <li><a href="https://api.whatsapp.com/send?phone=2348065964773&text=Hello,%20FastLane" target="_blank" class="icon-whatsapp"><i class="btn btn-success" aria-hidden="true"></i><span></span></a></li> *@
+                    <li><a href="https://www.facebook.com/ZEE-B-Multiconcept-Global-ltd-2055369311178239/" class="icon facebook"><i class="fa fa-facebook" aria-hidden="true"></i><span></span></a></li>
+                    <li><a href="#" class="icon twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a></li>
+                    <li><a href="https://www.instagram.com/zee.b.ltd/" class="icon instagram"><i class="fa fa-instagram" aria-hidden="true"></i><span></span></a></li>
+                    <li><a href="#" class="icon dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i><span></span></a></li>
+                </ul>
+                <div class=" address">
+                    <div class="col-md-4 fo-grid1">
+                        <p><i class="fa fa-home" aria-hidden="true"></i>141 road NAN building, Gowon Estate, Egbeda, Alimosho, Lagos State, Nigeria.</p>
+                    </div>
+                    <div class="col-md-4 fo-grid1">
+                        <p><i class="fa fa-phone" aria-hidden="true"></i>+2348065964773</p>
+                    </div>
+                    <div class="col-md-4 fo-grid1">
+                        <p><a href="mailto:info@pickone.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@pickone.com.ng</a></p>
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+            <div class="copy-right">
+                @* <%--<p>&copy; 2019 Zee B. All Rights Reserved | Design by  <a href="http://w3layouts.com/">W3layouts</a></p>--%> *@
+                <p>&copy; <%:DateTime.Now.Year %> PickOne. All Rights Reserved | Developed by Rondo</p>
+            </div>
+        </div>
+    </div>
+    <!-- //footer-->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        });
+    </script>
+    <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+    <!-- //smooth scrolling -->
+    <!-- for bootstrap working -->
+    <script src="js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <script type='text/javascript' src="js/jquery.mycart.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            var goToCartIcon = function ($addTocartBtn) {
+                var $cartIcon = $(".my-cart-icon");
+                var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({ "position": "fixed", "z-index": "999" });
+                $addTocartBtn.prepend($image);
+                var position = $cartIcon.position();
+                $image.animate({
+                    top: position.top,
+                    left: position.left
+                }, 500, "linear", function () {
+                    $image.remove();
+                });
+            }
+
+            $('.my-cart-btn').myCart({
+                classCartIcon: 'my-cart-icon',
+                classCartBadge: 'my-cart-badge',
+                affixCartIcon: true,
+                checkoutCart: function (products) {
+                    $.each(products, function () {
+                        console.log(this);
+                    });
+                },
+                clickOnAddToCart: function ($addTocart) {
+                    goToCartIcon($addTocart);
+                },
+                getDiscountPrice: function (products) {
+                    var total = 0;
+                    $.each(products, function () {
+                        total += this.quantity * this.price;
+                    });
+                    return total * 1;
+                }
+            });
+
+        });
+    </script>
+
+    <!-- product -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Moong(1 kg)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$2.00</del>$1.50</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="1" data-name="Moong" data-summary="summary 1" data-price="1.50" data-quantity="1" data-image="images/of.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of1.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Sunflower Oil(5 kg)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$10.00</del>$9.00</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="2" data-name="Sunflower Oil" data-summary="summary 2" data-price="9.00" data-quantity="1" data-image="images/of1.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of2.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Kabuli Chana(1 kg)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$3.00</del>$2.00</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="3" data-name="Kabuli Chana" data-summary="summary 3" data-price="2.00" data-quantity="1" data-image="images/of2.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of3.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Soya Chunks(1 kg)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$4.00</del>$3.50</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="4" data-name="Soya Chunks" data-summary="summary 4" data-price="3.50" data-quantity="1" data-image="images/of3.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of4.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Lays(100 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.70</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="5" data-name="Lays" data-summary="summary 5" data-price="0.70" data-quantity="1" data-image="images/of4.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of5.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Kurkure(100 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.70</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="6" data-name="Kurkure" data-summary="summary 6" data-price="0.70" data-quantity="1" data-image="images/of5.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of6.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Popcorn(250 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$2.00</del>$1.00</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="7" data-name="Popcorn" data-summary="summary 7" data-price="1.00" data-quantity="1" data-image="images/of6.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of7.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Nuts(250 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$4.00</del>$3.50</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="8" data-name="Nuts" data-summary="summary 8" data-price="3.50" data-quantity="1" data-image="images/of7.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of8.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Banana(6 pcs)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$2.00</del>$1.50</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="9" data-name="Banana" data-summary="summary 9" data-price="1.50" data-quantity="1" data-image="images/of8.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of9.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Onion(1 kg)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.70</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="10" data-name="Onion" data-summary="summary 10" data-price="0.70" data-quantity="1" data-image="images/of9.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of10.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Bitter Gourd(1 kg)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$2.00</del>$1.00</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="11" data-name="Bitter Gourd" data-summary="summary 11" data-price="1.00" data-quantity="1" data-image="images/of10.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of11.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Apples(1 kg)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$4.00</del>$3.50</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="12" data-name="Apples" data-summary="summary 12" data-price="3.50" data-quantity="1" data-image="images/of11.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal13" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of12.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Honey(500 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$7.00</del>$6.00</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="13" data-name="Honey" data-summary="summary 13" data-price="6.00" data-quantity="1" data-image="images/of12.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal14" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of13.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Chocos(250 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$5.00</del>$4.50</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="14" data-name="Chocos" data-summary="summary 14" data-price="4.50" data-quantity="1" data-image="images/of13.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal15" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of14.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Oats(1 kg)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$4.00</del>$3.50</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="15" data-name="Oats" data-summary="summary 15" data-price="3.50" data-quantity="1" data-image="images/of14.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal16" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of15.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Bread(500 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.80</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="16" data-name="Bread" data-summary="summary 16" data-price="0.80" data-quantity="1" data-image="images/of15.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal17" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of16.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Moisturiser(500 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.80</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="17" data-name="Moisturiser" data-summary="summary 17" data-price="0.80" data-quantity="1" data-image="images/of16.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal18" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of17.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Lady Finger(250 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.80</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="18" data-name="Lady Finger" data-summary="summary 18" data-price="0.80" data-quantity="1" data-image="images/of17.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal19" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of18.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Satin Ribbon Red(1 pc)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.80</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="19" data-name="Satin Ribbon Red" data-summary="summary 19" data-price="0.80" data-quantity="1" data-image="images/of18.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal20" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of19.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Grapes(500 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.80</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="20" data-name="Grapes" data-summary="summary 20" data-price="0.80" data-quantity="1" data-image="images/of19.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of20.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Clips(1 pack)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.80</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="21" data-name="Clips" data-summary="summary 21" data-price="0.80" data-quantity="1" data-image="images/of20.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal22" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of21.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Conditioner</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.80</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="22" data-name="Conditioner" data-summary="summary 22" data-price="0.80" data-quantity="1" data-image="images/of21.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal23" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of22.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Cleaner(250 kg)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.80</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="23" data-name="Cleaner" data-summary="summary 23" data-price="0.80" data-quantity="1" data-image="images/of22.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product -->
+    <div class="modal fade" id="myModal24" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-info">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-spa">
+                    <div class="col-md-5 span-2">
+                        <div class="item">
+                            <img src="images/of23.png" class="img-responsive" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>
+                            Gel(150 g)
+                            <div class="item">
+                                <img src="images/of23.png" class="img-responsive" alt="">
+                            </div>
+                    </div>
+                    <div class="col-md-7 span-1 ">
+                        <h3>Gel(150 g)</h3>
+                        <p class="in-para">There are many variations of passages of Lorem Ipsum.</p>
+                        <div class="price_single">
+                            <span class="reducedfrom "><del>$1.00</del>$0.80</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <h4 class="quick">Quick Overview:</h4>
+                        <p class="quick_desc">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; es</p>
+                        <div class="add-to">
+                            <button class="btn btn-danger my-cart-btn my-cart-btn1 " data-id="24" data-name="Gel" data-summary="summary 24" data-price="0.80" data-quantity="1" data-image="images/of23.png">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

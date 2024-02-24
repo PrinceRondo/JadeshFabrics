@@ -1,0 +1,117 @@
+﻿@model LoginDto
+@{
+    ViewData["Title"] = "Jadesh Fabrics Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Jadesh Fabrics Login! | </title>
+
+    <!-- Bootstrap -->
+    <link href="~/Template/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/Template/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Template/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="~/Template/vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="~/Template/build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form method="post" asp-controller="Home" asp-action="Index">
+                        <h1>Login</h1>
+                        @if (ViewBag.Message != null)
+                        {
+                            <h5 style="color:red">@ViewBag.Message</h5>
+                        }
+                        <input hidden asp-for="ReturnUrl" />
+                        <div>
+                            <input asp-for="Email" type="text" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div>
+                            @*<a class="btn btn-dark" asp-controller="Home" asp-action="Index">Log in</a>*@
+                            <button type="submit" class="btn btn-dark">Login</button>
+                            <a class="reset_pass" href="#">Lost your password?</a>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                New User?
+                                <a href="#signup" class="to_register"> Change Password </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <h1><i class="fa fa-paw"></i> Jadesh!</h1>
+                                <p>©2024 All Rights Reserved. Jadesh. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <div id="register" class="animate form registration_form">
+                <section class="login_content">
+                    <form method="post" asp-controller="Home" asp-action="ResetPassword">
+                        <h1>Account Verification</h1>
+                        <div>
+                            <input asp-for="NewPassword" type="text" class="form-control" placeholder="New Password" />
+                            <span asp-validation-for="NewPassword" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <input asp-for="VerificationCode" type="text" class="form-control" placeholder="Verification Code" />
+                            <span asp-validation-for="VerificationCode" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-dark">Reset Password</button>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                Account Verified ?
+                                <a href="#signin" class="to_register"> Log in </a>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                            <div>
+                                <h1><i class="fa fa-paw"></i> Jadesh!</h1>
+                                <p>©2024 All Rights Reserved. Jadesh. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
